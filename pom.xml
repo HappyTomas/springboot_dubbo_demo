@@ -11,6 +11,7 @@
 
     <modules>
         <module>dubbo-api</module>
+        <module>xml-dubbo-provider</module>
     </modules>
 
 </project>
