@@ -13,6 +13,7 @@
         <module>dubbo-api</module>
         <module>xml-dubbo-provider</module>
         <module>xml-dubbo-consumer</module>
+        <module>annotation-dubbo-provider</module>
     </modules>
 
 </project>
