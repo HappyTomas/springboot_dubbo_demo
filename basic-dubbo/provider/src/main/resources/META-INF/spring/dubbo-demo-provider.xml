@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="me.zhongmingmao"/>
+
+    <dubbo:application name="demo-provider"/>
+    <!-- see https://www.cnblogs.com/yangzhilong/p/6121551.html -->
+    <dubbo:protocol name="dubbo" port="20880"/>
+    <dubbo:registry protocol="zookeeper" address="zookeeper://127.0.0.1:2181?backup=127.0.0.1:2182,127.0.0.1:2183"/>
+    <!-- loadbalance的默认策略是随机 -->
+    <!-- see https://www.cnblogs.com/qingfengbuluo/p/5527930.html -->
+    <dubbo:service interface="me.zhongmingmao.DemoService" ref="demoService"
+                   loadbalance="random" retries="0" timeout="5000"/>
+
+
+</beans>
