@@ -1,0 +1,34 @@
+version: '2'
+
+services:
+  # ZK Cluster
+  zoo1:
+    image: zookeeper:latest
+    restart: always
+    container_name: zoo1
+    ports:
+      - "2181:2181"
+    volumes:
+      - ./zoo.cfg:/conf/zoo.cfg:ro
+    environment:
+      ZOO_MY_ID: 1 # ZK服务的ID
+  zoo2:
+    image: zookeeper:latest
+    restart: always
+    container_name: zoo2
+    ports:
+      - "2182:2181"
+    volumes:
+      - ./zoo.cfg:/conf/zoo.cfg:ro
+    environment:
+      ZOO_MY_ID: 2
+  zoo3:
+    image: zookeeper:latest
+    restart: always
+    container_name: zoo3
+    ports:
+      - "2183:2181"
+    volumes:
+      - ./zoo.cfg:/conf/zoo.cfg:ro
+    environment:
+      ZOO_MY_ID: 3
