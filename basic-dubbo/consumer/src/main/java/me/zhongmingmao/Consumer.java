@@ -1,6 +1,9 @@
 package me.zhongmingmao;
 
+import com.alibaba.dubbo.rpc.RpcContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.util.concurrent.Future;
 
 public class Consumer {
     
@@ -10,9 +13,14 @@ public class Consumer {
         context.start();
         // obtain proxy object for remote invocation
         DemoService demoService = (DemoService) context.getBean("demoService");
+        
         String hello = demoService.sayHello("world"); // execute remote invocation
-        System.out.println(hello); // show the result
-        System.in.read(); // press any key to exit
+        System.out.println(hello); // null
+        
+        Future<String> future = RpcContext.getContext().getFuture();
+        System.out.println(future.get()); // Hello world
+        
+        System.in.read();
         context.stop();
     }
 }

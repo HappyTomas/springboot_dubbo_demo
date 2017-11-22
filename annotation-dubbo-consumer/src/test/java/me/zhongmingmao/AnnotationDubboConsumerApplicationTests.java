@@ -25,5 +25,4 @@ public class AnnotationDubboConsumerApplicationTests {
         assertNotNull(helloService);
         assertFalse(StringUtils.isEmpty(helloService.sayHello()));
     }
-    
 }

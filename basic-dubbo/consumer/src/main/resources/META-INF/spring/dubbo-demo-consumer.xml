@@ -6,7 +6,11 @@
 
     <dubbo:application name="demo-consumer"/>
     <dubbo:registry protocol="zookeeper" address="zookeeper://127.0.0.1:2181?backup=127.0.0.1:2182,127.0.0.1:2183"/>
+    <!-- see http://blog.csdn.net/qh_java/article/details/53055421 -->
     <dubbo:reference id="demoService" interface="me.zhongmingmao.DemoService"
-                     loadbalance="random" retries="0" timeout="5000"/>
+                     loadbalance="random" retries="0" timeout="5000"
+                     async="true" sent="true">
+        <dubbo:method name="sayHello" return="true"/>
+    </dubbo:reference>
 
 </beans>

@@ -25,5 +25,4 @@ public class XmlDubboConsumerApplicationTests {
         assertNotNull(helloService);
         assertFalse(StringUtils.isEmpty(helloService.sayHello()));
     }
-    
 }
